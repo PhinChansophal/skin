@@ -14,444 +14,446 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-        <!-- Re-using existing custom styles if they were meant for Bootstrap layout -->
-    
+        <!-- Link to the external style.css file -->
+        <link rel="stylesheet" href="style.css">
         <style>
- /* Import Inter font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-/* General Body and Font Styling */
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f7fafc; /* Light gray background */
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Header and Navigation */
-.site-header {
-    background-color: #f8f9fa;
-    padding: 80px 0;
-    text-align: center;
-}
-
-.site-header h1 {
-    font-size: 3rem;
-    font-weight: 900;
-}
-
-.site-header #page-header-primary {
-    color: #e91e63; /* A vibrant pink for emphasis */
-}
-
-.navbar {
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.navbar-brand strong {
-    color: #333;
-}
-
-.navbar-brand span {
-    color: #e91e63; /* Matching the header primary color */
-}
-
-.nav-link {
-    font-weight: 500;
-    color: #555;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: #e91e63;
-}
-
-.custom-icon {
-    font-size: 1.5rem;
-    color: #333;
-    transition: color 0.3s ease;
-}
-
-.custom-icon:hover {
-    color: #e91e63;
-}
-
-/* Cart Icon Badge */
-.bi-bag[data-count]::after {
-    content: attr(data-count);
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: #e91e63; /* Pink for cart count */
-    color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
-
-/* Products Section */
-.products {
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
-
-.product-thumb {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    overflow: hidden;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Ensures all cards are same height */
-}
-
-.product-thumb:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.product-image-wrap {
-    display: block;
-    height: 250px; /* Fixed height for image container */
-    background-color: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-}
-
-.product-image {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain; /* Ensures image fits without cropping */
-    border-radius: 8px;
-}
-
-.product-info {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-grow: 1;
-}
-
-.product-title-wrap {
-    flex-grow: 1;
-    padding-right: 15px;
-}
-
-.product-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.product-title-link {
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.product-title-link:hover {
-    color: #e91e63;
-}
-
-.product-p {
-    font-size: 0.9rem;
-    color: #777;
-    margin-bottom: 5px;
-}
-
-.product-price-wrap {
-    text-align: right;
-}
-
-.product-price {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #28a745 !important; /* Bootstrap success color */
-}
-
-.add-to-cart-btn,
-.edit-product-btn,
-.delete-product-btn {
-    font-size: 0.85rem;
-    padding: 8px 12px;
-    border-radius: 8px;
-}
-
-/* Filter Buttons */
-.filter-btn {
-    border-radius: 20px !important; /* More rounded */
-    margin: 5px;
-    padding: 8px 18px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.filter-btn.active {
-    background-color: #e91e63;
-    border-color: #e91e63;
-    color: white;
-    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
-}
-
-.filter-btn:hover:not(.active) {
-    background-color: #f8e1e7;
-    border-color: #f8e1e7;
-    color: #e91e63;
-}
-
-/* Product Detail View */
-.product-detail-view .card {
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.product-detail-view .product-image {
-    height: auto; /* Allow height to adjust */
-    max-height: 400px;
-    object-fit: contain;
-    padding: 30px;
-    background-color: #f8f9fa;
-}
-
-.product-detail-view .card-body {
-    padding: 30px;
-}
-
-.product-detail-view .card-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #333;
-}
-
-.product-detail-view .card-text.text-muted {
-    font-size: 1.1rem;
-}
-
-.product-detail-view .card-text.fs-4 {
-    font-weight: 700;
-    color: #28a745 !important;
-}
-
-.product-detail-view .badge {
-    font-size: 0.9rem;
-    padding: 6px 12px;
-}
-
-/* Footer */
-.site-footer {
-    background-color: #212529;
-    color: #bbb;
-    padding: 60px 0 30px 0;
-}
-
-.site-footer h4, .site-footer h5 {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 25px;
-}
-
-.site-footer a {
-    color: #bbb;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.site-footer a:hover {
-    color: #e91e63;
-}
-
-.footer-menu-item {
-    list-style: none;
-    margin-right: 20px;
-    margin-bottom: 10px;
-}
-
-.social-icon {
-    display: flex;
-    gap: 15px;
-    padding: 0;
-    margin: 0;
-}
-
-.social-icon-link {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 50%;
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.social-icon-link:hover {
-    background-color: #e91e63;
-    color: white;
-}
-
-/* Cart Modal Specifics */
-.cart-item-img {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    background-color: #f8f9fa;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-
-.quantity-control {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.quantity-btn {
-    width: 35px;
-    height: 35px;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.quantity-btn:hover {
-    background-color: #e0e0e0;
-}
-
-.quantity-input {
-    width: 60px;
-    height: 35px;
-    text-align: center;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    -moz-appearance: textfield; /* Hide arrows on Firefox */
-}
-/* Hide arrows for Chrome, Safari, Edge */
-.quantity-input::-webkit-outer-spin-button,
-.quantity-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.remove-from-cart-btn {
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.empty-cart {
-    padding: 50px 0;
-    font-size: 1.1rem;
-    color: #6c757d;
-}
-
-.empty-cart i {
-    font-size: 4rem;
-    color: #a0a0a0;
-    margin-bottom: 25px;
-}
-
-.empty-cart h5 {
-    font-weight: 600;
-    color: #444;
-}
-
-/* Custom Modal Styles (Confirmation & Password) */
-.custom-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1050; /* Above Bootstrap modals */
-}
-
-.custom-modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    animation: fadeIn 0.3s ease-out;
-}
-
-.custom-modal-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.custom-modal-button {
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    border: none;
-}
-
-.custom-modal-button.confirm {
-    background-color: #e91e63; /* Pink confirm button */
-    color: white;
-}
-
-.custom-modal-button.confirm:hover {
-    background-color: #d81b60;
-    transform: translateY(-2px);
-}
-
-.custom-modal-button.cancel {
-    background-color: #e0e0e0; /* Light gray cancel button */
-    color: #333;
-}
-
-.custom-modal-button.cancel:hover {
-    background-color: #d0d0d0;
-    transform: translateY(-2px);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* Preloader */
-.preloader {
-    display: none !important; /* Hide it since it's an overlay and might not be fully functional in this environment */
-}
-
-/* Custom style for box product badge */
-.bg-purple-700 {
-    background-color: #6d28d9 !important; /* A nice purple */
-}
-
-
-        </style>    
+            /* Import Inter font from Google Fonts */
+           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+           
+           /* General Body and Font Styling */
+           body {
+               font-family: 'Inter', sans-serif;
+               background-color: #f7fafc; /* Light gray background */
+               color: #333;
+               line-height: 1.6;
+           }
+           
+           /* Header and Navigation */
+           .site-header {
+               background-color: #f8f9fa;
+               padding: 80px 0;
+               text-align: center;
+           }
+           
+           .site-header h1 {
+               font-size: 3rem;
+               font-weight: 900;
+           }
+           
+           .site-header #page-header-primary {
+               color: #e91e63; /* A vibrant pink for emphasis */
+           }
+           
+           .navbar {
+               background-color: #ffffff;
+               box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+           }
+           
+           .navbar-brand strong {
+               color: #333;
+           }
+           
+           .navbar-brand span {
+               color: #e91e63; /* Matching the header primary color */
+           }
+           
+           .nav-link {
+               font-weight: 500;
+               color: #555;
+               transition: color 0.3s ease;
+           }
+           
+           .nav-link:hover,
+           .nav-link.active {
+               color: #e91e63;
+           }
+           
+           .custom-icon {
+               font-size: 1.5rem;
+               color: #333;
+               transition: color 0.3s ease;
+           }
+           
+           .custom-icon:hover {
+               color: #e91e63;
+           }
+           
+           /* Cart Icon Badge */
+           .bi-bag[data-count]::after {
+               content: attr(data-count);
+               position: absolute;
+               top: -5px;
+               right: -5px;
+               background: #e91e63; /* Pink for cart count */
+               color: white;
+               border-radius: 50%;
+               width: 20px;
+               height: 20px;
+               font-size: 11px;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-weight: bold;
+           }
+           
+           /* Products Section */
+           .products {
+               padding-top: 80px;
+               padding-bottom: 80px;
+           }
+           
+           .product-thumb {
+               background-color: #fff;
+               border-radius: 12px;
+               box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+               overflow: hidden;
+               margin-bottom: 30px;
+               transition: transform 0.3s ease, box-shadow 0.3s ease;
+               display: flex;
+               flex-direction: column;
+               height: 100%; /* Ensures all cards are same height */
+           }
+           
+           .product-thumb:hover {
+               transform: translateY(-8px);
+               box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+           }
+           
+           .product-image-wrap {
+               display: block;
+               height: 250px; /* Fixed height for image container */
+               background-color: #f8f9fa;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               padding: 15px;
+           }
+           
+           .product-image {
+               max-height: 100%;
+               max-width: 100%;
+               object-fit: contain; /* Ensures image fits without cropping */
+               border-radius: 8px;
+           }
+           
+           .product-info {
+               padding: 20px;
+               display: flex;
+               justify-content: space-between;
+               align-items: flex-end;
+               flex-grow: 1;
+           }
+           
+           .product-title-wrap {
+               flex-grow: 1;
+               padding-right: 15px;
+           }
+           
+           .product-title {
+               font-size: 1.2rem;
+               font-weight: 700;
+               margin-bottom: 5px;
+           }
+           
+           .product-title-link {
+               color: #333;
+               text-decoration: none;
+               transition: color 0.3s ease;
+           }
+           
+           .product-title-link:hover {
+               color: #e91e63;
+           }
+           
+           .product-p {
+               font-size: 0.9rem;
+               color: #777;
+               margin-bottom: 5px;
+           }
+           
+           .product-price-wrap {
+               text-align: right;
+           }
+           
+           .product-price {
+               font-size: 1.3rem;
+               font-weight: 700;
+               color: #28a745 !important; /* Bootstrap success color */
+           }
+           
+           .add-to-cart-btn,
+           .edit-product-btn,
+           .delete-product-btn {
+               font-size: 0.85rem;
+               padding: 8px 12px;
+               border-radius: 8px;
+           }
+           
+           /* Filter Buttons */
+           .filter-btn {
+               border-radius: 20px !important; /* More rounded */
+               margin: 5px;
+               padding: 8px 18px;
+               font-weight: 500;
+               transition: all 0.3s ease;
+           }
+           
+           .filter-btn.active {
+               background-color: #e91e63;
+               border-color: #e91e63;
+               color: white;
+               box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+           }
+           
+           .filter-btn:hover:not(.active) {
+               background-color: #f8e1e7;
+               border-color: #f8e1e7;
+               color: #e91e63;
+           }
+           
+           /* Product Detail View */
+           .product-detail-view .card {
+               border-radius: 15px;
+               overflow: hidden;
+           }
+           
+           .product-detail-view .product-image {
+               height: auto; /* Allow height to adjust */
+               max-height: 400px;
+               object-fit: contain;
+               padding: 30px;
+               background-color: #f8f9fa;
+           }
+           
+           .product-detail-view .card-body {
+               padding: 30px;
+           }
+           
+           .product-detail-view .card-title {
+               font-size: 2rem;
+               font-weight: 700;
+               color: #333;
+           }
+           
+           .product-detail-view .card-text.text-muted {
+               font-size: 1.1rem;
+           }
+           
+           .product-detail-view .card-text.fs-4 {
+               font-weight: 700;
+               color: #28a745 !important;
+           }
+           
+           .product-detail-view .badge {
+               font-size: 0.9rem;
+               padding: 6px 12px;
+           }
+           
+           /* Footer */
+           .site-footer {
+               background-color: #212529;
+               color: #bbb;
+               padding: 60px 0 30px 0;
+           }
+           
+           .site-footer h4, .site-footer h5 {
+               color: #fff;
+               font-weight: 600;
+               margin-bottom: 25px;
+           }
+           
+           .site-footer a {
+               color: #bbb;
+               text-decoration: none;
+               transition: color 0.3s ease;
+           }
+           
+           .site-footer a:hover {
+               color: #e91e63;
+           }
+           
+           .footer-menu-item {
+               list-style: none;
+               margin-right: 20px;
+               margin-bottom: 10px;
+           }
+           
+           .social-icon {
+               display: flex;
+               gap: 15px;
+               padding: 0;
+               margin: 0;
+           }
+           
+           .social-icon-link {
+               width: 40px;
+               height: 40px;
+               line-height: 40px;
+               text-align: center;
+               border-radius: 50%;
+               background-color: rgba(255,255,255,0.1);
+               color: white;
+               transition: background-color 0.3s ease, color 0.3s ease;
+           }
+           
+           .social-icon-link:hover {
+               background-color: #e91e63;
+               color: white;
+           }
+           
+           /* Cart Modal Specifics */
+           .cart-item-img {
+               width: 90px;
+               height: 90px;
+               object-fit: contain;
+               background-color: #f8f9fa;
+               padding: 8px;
+               border-radius: 8px;
+               border: 1px solid #eee;
+           }
+           
+           .quantity-control {
+               display: flex;
+               align-items: center;
+               gap: 5px;
+           }
+           
+           .quantity-btn {
+               width: 35px;
+               height: 35px;
+               border-radius: 8px;
+               font-size: 1.1rem;
+               font-weight: bold;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               background-color: #f0f0f0;
+               border: 1px solid #ddd;
+               cursor: pointer;
+               transition: background-color 0.2s ease;
+           }
+           
+           .quantity-btn:hover {
+               background-color: #e0e0e0;
+           }
+           
+           .quantity-input {
+               width: 60px;
+               height: 35px;
+               text-align: center;
+               border-radius: 8px;
+               border: 1px solid #ddd;
+               -moz-appearance: textfield; /* Hide arrows on Firefox */
+           }
+           /* Hide arrows for Chrome, Safari, Edge */
+           .quantity-input::-webkit-outer-spin-button,
+           .quantity-input::-webkit-inner-spin-button {
+               -webkit-appearance: none;
+               margin: 0;
+           }
+           
+           .remove-from-cart-btn {
+               padding: 5px 10px;
+               border-radius: 8px;
+           }
+           
+           .empty-cart {
+               padding: 50px 0;
+               font-size: 1.1rem;
+               color: #6c757d;
+           }
+           
+           .empty-cart i {
+               font-size: 4rem;
+               color: #a0a0a0;
+               margin-bottom: 25px;
+           }
+           
+           .empty-cart h5 {
+               font-weight: 600;
+               color: #444;
+           }
+           
+           /* Custom Modal Styles (Confirmation & Password) */
+           .custom-modal-overlay {
+               position: fixed;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+               background-color: rgba(0, 0, 0, 0.6);
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               z-index: 1050; /* Above Bootstrap modals */
+           }
+           
+           .custom-modal-content {
+               background-color: white;
+               padding: 30px;
+               border-radius: 12px;
+               box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+               text-align: center;
+               max-width: 400px;
+               width: 90%;
+               animation: fadeIn 0.3s ease-out;
+           }
+           
+           .custom-modal-buttons {
+               display: flex;
+               justify-content: center;
+               gap: 15px;
+               margin-top: 25px;
+           }
+           
+           .custom-modal-button {
+               padding: 12px 25px;
+               border-radius: 8px;
+               font-weight: 600;
+               cursor: pointer;
+               transition: background-color 0.2s ease, transform 0.1s ease;
+               border: none;
+           }
+           
+           .custom-modal-button.confirm {
+               background-color: #e91e63; /* Pink confirm button */
+               color: white;
+           }
+           
+           .custom-modal-button.confirm:hover {
+               background-color: #d81b60;
+               transform: translateY(-2px);
+           }
+           
+           .custom-modal-button.cancel {
+               background-color: #e0e0e0; /* Light gray cancel button */
+               color: #333;
+           }
+           
+           .custom-modal-button.cancel:hover {
+               background-color: #d0d0d0;
+               transform: translateY(-2px);
+           }
+           
+           @keyframes fadeIn {
+               from { opacity: 0; transform: scale(0.95); }
+               to { opacity: 1; transform: scale(1); }
+           }
+           
+           /* Preloader */
+           .preloader {
+               display: none !important; /* Hide it since it's an overlay and might not be fully functional in this environment */
+           }
+           
+           /* Custom style for box product badge */
+           .bg-purple-700 {
+               background-color: #6d28d9 !important; /* A nice purple */
+           }
+           
+           
+                   </style>    
+    </head>
+    
     <body>
         <section class="preloader">
             <div class="spinner">
@@ -774,255 +776,18 @@ body {
         <!-- <script src="js/custom.js"></script> --> 
 
         <script>
-<<<<<<< HEAD
             // Helper function to generate a unique ID
             const generateUniqueId = () => Math.random().toString(36).substring(2, 9);
-=======
-        // Product data
-        const products = [
-            {
-                id: 'bb1',
-                category: 'bb',
-                name: 'CLINIQUE',
-                title: 'Moisture Surge™ CC Cream Hydrating Color Corrector Broad Spectrum SPF 30',
-                price: 44.00,
-                image: 'img/bb/1.png',
-                description: 'A hydrating color corrector with SPF 30 protection that instantly hydrates while perfecting skin tone.',
-                details: 'Oil-free formula provides sheer-to-medium coverage while improving skin hydration over time. Contains hyaluronic acid and aloe water for 24-hour hydration.'
-            },
-            {
-                id: 'bb2',
-                category: 'bb',
-                name: 'IT Cosmetics',
-                title: 'CC+ Cream Illumination with SPF 50+',
-                price: 47.00,
-                image: 'img/bb/2.png',
-                description: 'Illuminating color corrector with SPF 50+ that brightens skin while providing full coverage.',
-                details: 'Infused with hydrolyzed collagen, peptides, niacin, hyaluronic acid, vitamins and antioxidants. Provides anti-aging benefits while covering imperfections.'
-            },
-            {
-                id: 'bb3',
-                category: 'bb',
-                name: 'tarte',
-                title: 'mini BB blur natural matte tinted moisturizer Broad Spectrum SPF 30 Sunscreen',
-                price: 18.00,
-                image: 'img/bb/3.png',
-                description: 'Mini matte-finish BB cream with SPF 30 that blurs imperfections.',
-                details: 'Oil-free formula minimizes pores and shine while providing natural-looking coverage. Contains Amazonian clay to balance skin.'
-            },
-            {
-                id: 'bb4',
-                category: 'bb',
-                name: 'Laura Mercier',
-                title: 'Mini Long-Wear Tinted Moisturizer Natural Dewy SPF 30 with Hyaluronic Acid',
-                price: 25.00,
-                image: 'img/bb/4.png',
-                description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
-                details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.'
-            },
-            {
-                id: 'bb5',
-                category: 'bb',
-                name: 'ONE/SIZE by Patrick Starrr ',
-                title: 'Turn Up the Base Blurring Foundation',
-                price: 17.50,
-                image: 'img/bb/5.png',
-                description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
-                details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.'
-            },
-            {
-                id: 'bb6',
-                category: 'bb',
-                name: 'Summer Fridays ',
-                title: 'Sheer Skin Tint with Hyaluronic Acid + Squalane',
-                price: 17.50,
-                image: 'img/bb/6.png',
-                description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
-                details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.'
-            },
-            {
-                id: 'bb7',
-                category: 'bb',
-                name: 'IT Cosmetics  ',
-                title: 'CC+ Cream Natural Matte Foundation with SPF 40',
-                price: 47.00,
-                image: 'img/bb/6.png',
-                description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
-                details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.'
-            },
-            {
-                id: 'concealer1',
-                category: 'concealer',
-                name: 'Tower 28 Beauty',
-                title: 'Swipe All-Over Hydrating Serum Concealer',
-                price: 22.00,
-                image: 'img/conceler/1.png',
-                description: 'Hydrating serum concealer that provides buildable coverage.',
-                details: 'Clean formula with squalane and green tea extract that hydrates while covering dark circles and imperfections.'
-            },
-            {
-                id: 'concealer2',
-                category: 'concealer',
-                name: 'Hourglass',
-                title: 'Vanish™ Airbrush Concealer',
-                price: 38.00,
-                image: 'img/conceler/2.png',
-                description: 'Full-coverage concealer with an airbrush finish.',
-                details: 'Cream-to-powder formula provides waterproof coverage that lasts 16 hours. Blurs imperfections without creasing.'
-            },
-            {
-                id: 'concealer3',
-                category: 'concealer',
-                name: 'NARS',
-                title: 'Radiant Creamy Concealer with Medium Coverage',
-                price: 32.00,
-                image: 'img/conceler/3.png',
-                description: 'Creamy concealer that brightens and corrects with medium coverage.',
-                details: 'Light-diffusing technology minimizes fine lines and wrinkles while providing natural-looking coverage.'
-            },
-            {
-                id: 'concealer4',
-                category: 'concealer',
-                name: 'SEPHORA COLLECTION ',
-                title: 'Best Skin Ever Multi-Use Hydrating Glow Concealer',
-                price: 16.00,
-                image: 'img/conceler/4.png',
-                description: 'Creamy concealer that brightens and corrects with medium coverage.',
-                details: 'Light-diffusing technology minimizes fine lines and wrinkles while providing natural-looking coverage.'
-            },
-            {
-                id: 'concealer4',
-                category: 'concealer',
-                name: 'SEPHORA COLLECTION ',
-                title: 'Best Skin Ever Multi-Use Hydrating Glow Concealer',
-                price: 16.00,
-                image: 'img/conceler/5.png',
-                description: 'Creamy concealer that brightens and corrects with medium coverage.',
-                details: 'Light-diffusing technology minimizes fine lines and wrinkles while providing natural-looking coverage.'
-            },
-            {
-                id: 'face1',
-                category: 'face',
-                name: 'Dieux',
-                title: 'Instant Angel Lipid & Peptide-Rich Moisturizer + Barrier Repair',
-                price: 42.00,
-                image: 'img/face/1.png',
-                description: 'Rich moisturizer that repairs skin barrier with lipids and peptides.',
-                details: 'Contains ceramides, cholesterol, and fatty acids to restore skin barrier. Peptides help with collagen production.'
-            },
-            {
-                id: 'face2',
-                category: 'face',
-                name: 'Dieux',
-                title: 'barrier+ Strengthening and Moisturizing Triple Lipid-Peptide Refillable Cream with B-L3',
-                price: 54.00,
-                image: 'img/face/2.png',
-                description: 'Refillable barrier repair cream with triple lipid technology.',
-                details: 'Clinically shown to strengthen skin barrier in 1 week. Contains patented B-L3 complex for enhanced hydration.'
-            },
-            {
-                id: 'face3',
-                category: 'face',
-                name: 'Tower 28 Beauty',
-                title: 'Natural Moisturizing Factors + Hyaluronic Acid Daily Moisturizer',
-                price: 14.00,
-                image: 'img/face/3.png',
-                description: 'Daily moisturizer that soothes redness and repairs skin barrier.',
-                details: 'Hypochlorous acid formula calms irritation while ceramides and fatty acids strengthen the skin barrier.'
-            },
-            {
-                id: 'face4',
-                category: 'face',
-                name: 'Tower 28 Beauty',
-                title: 'Natural Moisturizing Factors + Hyaluronic Acid Daily Moisturizer',
-                price: 14.00,
-                image: 'img/face/4.png',
-                description: 'Daily moisturizer that soothes redness and repairs skin barrier.',
-                details: 'Hypochlorous acid formula calms irritation while ceramides and fatty acids strengthen the skin barrier.'
-            },
-            {
-                id: 'face5',
-                category: 'face',
-                name: 'The Ordinary  ',
-                title: 'Hyaluronic Acid 2% + B5 Hydrating Serum with Ceramides',
-                price: 9.00,
-                image: 'img/face/5.png',
-                description: 'Daily moisturizer that soothes redness and repairs skin barrier.',
-                details: 'Hypochlorous acid formula calms irritation while ceramides and fatty acids strengthen the skin barrier.'
-            },
-            {
-                id: 'night1',
-                category: 'night',
-                name: 'SEPHORA COLLECTION',
-                title: 'Overnight Hydrating Mask',
-                price: 8.00,
-                image: 'img/night/1.png',
-                description: 'Affordable overnight mask that deeply hydrates skin.',
-                details: 'Lightweight gel-cream formula with hyaluronic acid provides intense hydration while you sleep.'
-            },
-            {
-                id: 'night2',
-                category: 'night',
-                name: 'fresh',
-                title: 'Lotus Youth Preserve Radiance Renewal Night Cream',
-                price: 62.00,
-                image: 'img/night/2.png',
-                description: 'Night cream that renews radiance while you sleep.',
-                details: 'Contains super lotus extract and vitamin E to help skin recover overnight. Leaves skin glowing by morning.'
-            },
-            {
-                id: 'night3',
-                category: 'night',
-                name: 'Tatcha',
-                title: 'Indigo Overnight Repair Redness Reducing Barrier Cream',
-                price: 92.00,
-                image: 'img/night/3.png',
-                description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
-                details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.'
-            },
-            {
-                id: 'night4',
-                category: 'night',
-                name: 'Fenty Beauty by Rihanna ',
-                title: 'Instant Reset Brightening Overnight Recovery Gel-Cream With Niacinamide + Kalahari Melon Oil ',
-                price: 46.00,
-                image: 'img/night/4.png',
-                description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
-                details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.'
-            },
-            {
-                id: 'night5',
-                category: 'night',
-                name: 'ALPYN  ',
-                title: 'Firming, Plumping & Brightening Moisturizer with Bakuchiol & Ceramides ',
-                price: 60.00,
-                image: 'img/night/5.png',
-                description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
-                details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.'
-            },
-            {
-                id: 'night6',
-                category: 'night',
-                name: ' The INKEY List  ',
-                title: 'C-50 Blemish Night Treatment',
-                price: 16.00,
-                image: 'img/night/6.png',
-                description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
-                details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.'
-            }
-    
-        ];
->>>>>>> 4cdb451131f5182a7cabc86f23604f331df02395
 
-            // Product data - Modified to include isBoxProduct and boxContents
-            let products = [
+            // Default product data - used only if localStorage is empty
+            const defaultProductsData = [
                 {
                     id: 'bb1',
                     category: 'bb',
                     name: 'CLINIQUE',
                     title: 'Moisture Surge™ CC Cream Hydrating Color Corrector Broad Spectrum SPF 30',
                     price: 44.00,
-                    image: 'https://placehold.co/400x300/a3e635/1c1917?text=Cleanser', // Using placeholder for consistency
+                    image: 'https://placehold.co/400x300/a3e635/1c1917?text=Cleanser',
                     description: 'A hydrating color corrector with SPF 30 protection that instantly hydrates while perfecting skin tone.',
                     details: 'Oil-free formula provides sheer-to-medium coverage while improving skin hydration over time. Contains hyaluronic acid and aloe water for 24-hour hydration.',
                     stock: 50,
@@ -1187,6 +952,13 @@ body {
                 }
             ];
 
+            // Load products from localStorage or use the default list
+            let products = JSON.parse(localStorage.getItem('products'));
+            if (!products || products.length === 0) {
+                products = defaultProductsData;
+                localStorage.setItem('products', JSON.stringify(products)); // Save initial default products
+            }
+
             // Cart functionality (using localStorage for persistence)
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let isAdminMode = false; // Global flag for admin mode
@@ -1284,6 +1056,11 @@ body {
                 adminPasswordModal.classList.add('d-none');
             }
 
+            // Function to save the current products array to localStorage
+            function saveProductsToLocalStorage() {
+                localStorage.setItem('products', JSON.stringify(products));
+            }
+
             // Function to render product list
             function renderProducts(filteredProducts = products) {
                 productListElement.innerHTML = `
@@ -1295,7 +1072,8 @@ body {
                 // Get deleted product IDs from localStorage
                 let deletedProducts = JSON.parse(localStorage.getItem('deletedProducts') || '[]');
                 
-                // Filter out products marked as deleted
+                // Filter out products marked as deleted for display in both modes
+                // Only show products that are NOT in the deletedProducts list
                 let productsToDisplay = (filteredProducts || products).filter(p => !deletedProducts.includes(p.id));
 
                 if (productsToDisplay.length === 0) {
@@ -1393,8 +1171,9 @@ body {
                                     localStorage.setItem('deletedProducts', JSON.stringify(deletedProducts));
                                 }
                                 
-                                // Remove from the in-memory products array
+                                // Filter out the product from the in-memory 'products' array
                                 products = products.filter(p => p.id !== productIdToDelete);
+                                saveProductsToLocalStorage(); // Save changes to products array
                                 renderProducts(); // Re-render after deletion
                             }
                             hideConfirm();
@@ -1693,6 +1472,7 @@ body {
                     products.push(newProductData);
                 }
                 
+                saveProductsToLocalStorage(); // Save updated products to localStorage
                 productFormModal.hide(); // Close modal
                 renderProducts(); // Re-render product list
             }
@@ -1818,8 +1598,5 @@ body {
                 setupEventListeners(); // Setup all event listeners
             });
         </script>
-    </body>
-</html>
-
     </body>
 </html>

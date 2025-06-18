@@ -17,23 +17,649 @@
         <link rel="stylesheet" href="css/slick.css"/>
         <link href="css/tooplate-little-fashion.css" rel="stylesheet">
         
-        <style>
-            /* Add custom styles for the confirmation message */
-            .confirmation-message {
-                display: none;
-                text-align: center;
-                padding: 30px;
-                background-color: #f8f9fa;
-                border-radius: 10px;
-                margin-top: 20px;
-            }
-            
-            .confirmation-image {
-                max-width: 200px;
-                margin: 0 auto 20px;
-                display: block;
-            }
-        </style>
+      <style>
+        /* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* General Body and Font Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7fafc; /* Light gray background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
+.site-header {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* Specific for Contact Page Header */
+.site-header-image {
+    position: relative;
+    padding: 120px 0; /* Adjust padding for image */
+    overflow: hidden;
+}
+
+.site-header-image .header-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.6); /* Darken image slightly for text readability */
+}
+
+.site-header-image .container {
+    position: relative;
+    z-index: 1;
+}
+
+
+.site-header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.site-header #page-header-primary {
+    color: #e91e63; /* A vibrant pink for emphasis */
+}
+
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.navbar-brand strong {
+    color: #333;
+}
+
+.navbar-brand span {
+    color: #e91e63; /* Matching the header primary color */
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #e91e63;
+}
+
+.custom-icon {
+    font-size: 1.5rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.custom-icon:hover {
+    color: #e91e63;
+}
+
+/* Cart Icon Badge */
+.bi-bag[data-count]::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e91e63; /* Pink for cart count */
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Products Section */
+.products {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.product-thumb {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures all cards are same height */
+}
+
+.product-thumb:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.product-image-wrap {
+    display: block;
+    height: 250px; /* Fixed height for image container */
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.product-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Ensures image fits without cropping */
+    border-radius: 8px;
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-grow: 1;
+}
+
+.product-title-wrap {
+    flex-grow: 1;
+    padding-right: 15px;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.product-title-link {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.product-title-link:hover {
+    color: #e91e63;
+}
+
+.product-p {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.product-price-wrap {
+    text-align: right;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #28a745 !important; /* Bootstrap success color */
+}
+
+.add-to-cart-btn,
+.edit-product-btn,
+.delete-product-btn {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+/* Filter Buttons */
+.filter-btn {
+    border-radius: 20px !important; /* More rounded */
+    margin: 5px;
+    padding: 8px 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background-color: #e91e63;
+    border-color: #e91e63;
+    color: white;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+}
+
+.filter-btn:hover:not(.active) {
+    background-color: #f8e1e7;
+    border-color: #f8e1e7;
+    color: #e91e63;
+}
+
+/* Product Detail View */
+.product-detail-view .card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.product-detail-view .product-image {
+    height: auto; /* Allow height to adjust */
+    max-height: 400px;
+    object-fit: contain;
+    padding: 30px;
+    background-color: #f8f9fa;
+}
+
+.product-detail-view .card-body {
+    padding: 30px;
+}
+
+.product-detail-view .card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.product-detail-view .card-text.text-muted {
+    font-size: 1.1rem;
+}
+
+.product-detail-view .card-text.fs-4 {
+    font-weight: 700;
+    color: #28a745 !important;
+}
+
+.product-detail-view .badge {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #212529;
+    color: #bbb;
+    padding: 60px 0 30px 0;
+}
+
+.site-footer h4, .site-footer h5 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.site-footer a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #e91e63;
+}
+
+.footer-menu-item {
+    list-style: none;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icon-link {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icon-link:hover {
+    background-color: #e91e63;
+    color: white;
+}
+
+/* Cart Modal Specifics */
+.cart-item-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.quantity-input {
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    -moz-appearance: textfield; /* Hide arrows on Firefox */
+}
+/* Hide arrows for Chrome, Safari, Edge */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.remove-from-cart-btn {
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.empty-cart {
+    padding: 50px 0;
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.empty-cart i {
+    font-size: 4rem;
+    color: #a0a0a0;
+    margin-bottom: 25px;
+}
+
+.empty-cart h5 {
+    font-weight: 600;
+    color: #444;
+}
+
+/* Custom Modal Styles (Confirmation & Password) */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Above Bootstrap modals */
+}
+
+.custom-modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.custom-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.custom-modal-button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: none;
+}
+
+.custom-modal-button.confirm {
+    background-color: #e91e63; /* Pink confirm button */
+    color: white;
+}
+
+.custom-modal-button.confirm:hover {
+    background-color: #d81b60;
+    transform: translateY(-2px);
+}
+
+.custom-modal-button.cancel {
+    background-color: #e0e0e0; /* Light gray cancel button */
+    color: #333;
+}
+
+.custom-modal-button.cancel:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Preloader */
+.preloader {
+    display: none !important; /* Hide it since it's an overlay and might not be fully functional in this environment */
+}
+
+/* Custom style for box product badge */
+.bg-purple-700 {
+    background-color: #6d28d9 !important; /* A nice purple */
+}
+
+/* Contact Section Specific Styles */
+.contact {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+.contact h2 span {
+    color: #e91e63;
+}
+
+.contact-form .form-control {
+    border-radius: 8px;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+    border-color: #e91e63;
+    box-shadow: 0 0 0 0.25rem rgba(233, 30, 99, 0.25);
+}
+
+.contact-form label {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.contact-form button[type="submit"] {
+    background-color: #e91e63;
+    color: white;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: #d81b60;
+    transform: translateY(-2px);
+}
+
+.contact-info {
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    height: 100%; /* Ensure equal height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-info:nth-child(even) {
+    background-color: #f1f3f5; /* Slightly different background for alternating cards */
+}
+
+.contact-info h6 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.contact-info .custom-link {
+    color: #e91e63;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact-info .custom-link i {
+    font-size: 1.1rem;
+}
+
+.contact-info .social-icon {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info .social-icon-link {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #e91e63;
+    color: white;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.contact-info .social-icon-link:hover {
+    background-color: #d81b60;
+    transform: translateY(-3px);
+}
+
+/* Confirmation Message Styles */
+.confirmation-message {
+    text-align: center;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin-top: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: none; /* Controlled by JS */
+    opacity: 0; /* For fade in effect */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.confirmation-message.show {
+    opacity: 1;
+}
+
+.confirmation-image {
+    max-width: 250px; /* Slightly larger video */
+    margin: 0 auto 30px;
+    display: block;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures video respects border-radius */
+}
+
+.confirmation-message h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #28a745; /* Success color */
+    margin-bottom: 15px;
+}
+
+.confirmation-message p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .site-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .products .product-thumb {
+        margin-bottom: 20px;
+    }
+
+    .filter-btn {
+        margin: 3px;
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .site-header h1 {
+        font-size: 2rem;
+    }
+
+    .product-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-price-wrap {
+        text-align: left;
+        margin-top: 15px;
+    }
+    
+    .contact-info {
+        padding: 20px;
+    }
+
+    .contact-info .social-icon {
+        justify-content: flex-start;
+    }
+}
+
+      </style>
     </head>
     
     <body>
@@ -103,8 +729,6 @@
                         </div>
                     </div>
                 </div>
-
-                <img src="images/header/positive-european-woman-has-break-after-work.jpg" class="header-image img-fluid" alt="">
             </header>
 
             <section class="contact section-padding">
